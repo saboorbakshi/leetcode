@@ -1,0 +1,25 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        hashmap = {'(':')', '{':'}', '[':']'}
+        for bracket in s:
+            if bracket in hashmap:
+                stack.append(hashmap[bracket])
+            else:
+                # empty or the last bracket type added does not match the curr bracket type
+                if not stack or stack[-1] != bracket:
+                    return False
+                stack.pop()
+        
+        return False if stack else True
+
+'''
+stack[-1] = last element in list
+
+if stack = if not empty
+if not stack = if empty
+'''
